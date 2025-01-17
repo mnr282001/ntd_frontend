@@ -1,3 +1,4 @@
+// App.js
 import React from 'react';
 import NotesForm from './components/NotesForm';
 import NotesList from './components/NotesList';
@@ -6,15 +7,19 @@ import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className="app-container">
+      <header className="app-header">
         <h1>Daily Notes & Standup Summary</h1>
       </header>
-      <main>
-        <NotesForm />
-        <NotesList day="today" />
-        <NotesList day="yesterday" />
-        <StandupSummary />
+      <main className="app-main">
+        <div className="app-content">
+          <NotesForm />
+          <div className="notes-section">
+            <NotesList day="today" />
+            <NotesList day="yesterday" />
+          </div>
+          <StandupSummary />
+        </div>
       </main>
     </div>
   );

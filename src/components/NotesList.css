@@ -1,0 +1,72 @@
+/* NotesList.css */
+.notes-list-container {
+    max-width: 100%;
+    padding: 16px;
+    box-sizing: border-box;
+  }
+  
+  .notes-list-header {
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+  
+  .notes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .note-item {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .note-title {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+    color: #333;
+  }
+  
+  .note-content {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 8px;
+  }
+  
+  .note-timestamp {
+    display: block;
+    font-size: 0.8rem;
+    color: #999;
+    text-align: right;
+  }
+  
+  .no-notes {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+  }
+  
+  @media (max-width: 600px) {
+    .notes-list-container {
+      padding: 8px;
+    }
+  
+    .notes-list-header {
+      font-size: 1.2rem;
+    }
+  
+    .note-item {
+      padding: 8px;
+    }
+  
+    .note-title {
+      font-size: 1rem;
+    }
+  
+    .note-content {
+      font-size: 0.9rem;
+    }
+  }

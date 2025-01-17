@@ -1,43 +1,41 @@
+// NotesForm.js
 import React, { useState } from 'react';
 import axios from 'axios';
-import { format } from 'date-fns';
+import './NotesForm.css';
 
 function NotesForm() {
-  const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3000/notes', {
-        title: title || null,
-        content,
-        created_at: format(new Date(), "yyyy-MM-dd'T'HH:mm:ssxxx")
+      await axios.post('http://localhost:3000/notes', { 
+        content, 
+        created_at: new Date().toISOString() 
       });
-      
-      // Reset form after submission
-      setTitle('');
       setContent('');
-      
-      // Optional: Refresh notes list or show success message
-      alert('Note created successfully!');
+      alert('Note saved successfully!');
     } catch (error) {
-      console.error('Error creating note:', error);
-      alert('Failed to create note');
+      console.error('Error saving note:', error);
+      alert('Failed to save note');
     }
   };
 
   return (
-    <div className="notes-form">
-      <h2>Create New Note</h2>
-      <form onSubmit={handleSubmit}>
-        <textarea 
-          value={content} 
-          onChange={(e) => setContent(e.target.value)} 
-          placeholder="Note Content" 
-          required 
-        />
-        <button type="submit">Create Note</button>
+    <div className="notes-form-container">
+      <h2 className="notes-form-header">Create a New Note</h2>
+      <form onSubmit={handleSubmit} className="notes-form">
+        <div className="form-group">
+          <label htmlFor="content">Content</label>
+          <textarea
+            id="content"
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+            required
+            className="form-textarea"
+          />
+        </div>
+        <button type="submit" className="form-submit-btn">Save Note</button>
       </form>
     </div>
   );
