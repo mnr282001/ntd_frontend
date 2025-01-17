@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { format } from 'date-fns';
 
-function NotesList() {
+function NotesList({ day }) {
   const [notes, setNotes] = useState([]);
 
   useEffect(() => {
     const fetchNotes = async () => {
         try {
-          const response = await axios.get('http://localhost:3000/notes/today');
+          console.log("Fetching notes for day: ", day);
+          const response = await axios.get(`http://localhost:3000/notes/${day}`);
           // Ensure we have an array, even if the response is different
           const notesData = Array.isArray(response.data) 
             ? response.data 
@@ -21,11 +22,13 @@ function NotesList() {
       };
 
     fetchNotes();
-  }, []);
+  }, [day]);
+
+  const dayDisplay = day === 'today' ? 'Today' : day === 'yesterday' ? 'Yesterday' : day;
 
   return (
     <div className="notes-list">
-      <h2>Today's Notes</h2>
+      <h2>{ dayDisplay }'s Notes</h2>
       {notes.map((note) => (
         <div key={note.id} className="note-item">
           <h3>{note.title}</h3>

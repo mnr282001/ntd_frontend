@@ -12,7 +12,8 @@ function App() {
       </header>
       <main>
         <NotesForm />
-        <NotesList />
+        <NotesList day="today" />
+        <NotesList day="yesterday" />
         <StandupSummary />
       </main>
     </div>
