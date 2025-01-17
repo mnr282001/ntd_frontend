@@ -20,6 +20,7 @@ function StandupSummary() {
     } catch (error) {
       console.error('Error fetching standup summary:', error);
       setError('Failed to generate standup summary');
+    } finally {
       setLoading(false);
     }
   };
